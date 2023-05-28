@@ -1,0 +1,27 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>navbar</title>
+    <link rel="stylesheet" href="{% static 'css/web.css' %}" media="screen">
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="container">
+            <div class="brand">
+                <h2>stock price</h2>
+            </div>
+            <ul class="links">
+                <li><a href=" {% url 'index' %} ">Home</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'Apple' %}">Apple</a></li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    
+</body>
+</html>
