@@ -1,0 +1,6 @@
+.u-custom-menu.u-nav-container {
+  position: fixed !important;
+  top: 0;
+  right: 0;
+  z-index: 9999; /* Adjust the z-index value as needed */
+}

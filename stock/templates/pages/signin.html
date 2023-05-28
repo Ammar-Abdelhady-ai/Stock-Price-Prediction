@@ -1,10 +1,33 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="{% static 'css/nicepage_Contact.css' %}" media="screen">
+    <link rel="stylesheet" href="{% static 'css/Contact_Contact.css' %}" media="screen">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign in</title>
+
+    <style>
+        .u-custom-menu.u-nav-container {
+            position: fixed;
+            top: 0;
+            right: 0;
+            padding: 40px;
+            z-index: 9999;
+        }
+    </style>
+</head>
+<body>
+    <div class="u-custom-menu u-nav-container">
+        <ul class="u-nav u-unstyled u-nav-1">
+            <li class="u-nav-item">
+                <a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="{% url 'Contact' %}" style="padding: 10px 32px 10px 34px;">Contact</a>
+            </li>
+        </ul>
+    </div>
 </head>
 <body>
     <h3>sign in</h3>
