@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="{% static 'css/nicepage_Contact.css' %}" media="screen">
     <link rel="stylesheet" href="{% static 'css/Contact_Contact.css' %}" media="screen">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
     <title>Sign in</title>
 
     <style>
@@ -18,6 +20,14 @@
             padding: 40px;
             z-index: 9999;
         }
+
+        
+        body{
+
+background-image: url("./../../static/css/images/Home.jpg");
+/* opacity: 0.7; */
+}
+
     </style>
 </head>
 <body>
@@ -30,23 +40,32 @@
     </div>
 </head>
 <body>
-    <h3>sign in</h3>
+
+    
+ <div class="container text-info">
+    <div class="row w-50 m-auto">
+
+        <h3 class="text-center my-3">Sign in</h3>
 
     <form action="/signin" method="post">
     {% csrf_token %}
 
+        <div class="row mb-3">
 
-        <label for="">Username</label>
-        <input type="text" id="username" name="username" placeholder="Enter Your username" required >
-        <br>
-
+            <label for="">Username</label>
+            <input type="text" id="username" name="username" placeholder="Enter Your username" required >
+            
+        </div>
        
+        <div class="row mb-3">
+            <label for="">password</label>
+            <input type="password" id="pass1" name="pass1" placeholder="Enter Your Password" required >
+        </div>
 
-        <label for="">password</label>
-        <input type="password" id="pass1" name="pass1" placeholder="Enter Your Password" required >
+        <button class="btn btn-outline-primary" type="submit">Sign In</button>
+    </form>   
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 
-        <br>
-        <button type="submit">Sign In</button>
-    </form>    
 </body>
 </html>

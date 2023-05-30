@@ -52,7 +52,7 @@
 
 .u-section-1 .u-image-1 {
   min-height: 537px;
-  background-image: url("images/9.jpg");
+  background-image: url("images/Logo/College_logo.jpg");
   background-position: 50% 50%;
   --animation-custom_in-translate_x: 300px;
   --animation-custom_in-translate_y: 0px;
@@ -661,7 +661,7 @@
   object-position: 0% 47.63%;
   width: 198px;
   height: 198px;
-  background-image: url("images/8.jpg");
+  background-image: url("images/Logo/University_logo.jpg");
   background-position: 50% 50%;
   margin: -68px auto 0;
 }

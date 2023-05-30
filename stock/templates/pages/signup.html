@@ -2,12 +2,15 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="{% static 'css/nicepage_Contact.css' %}" media="screen">
     <link rel="stylesheet" href="{% static 'css/Contact_Contact.css' %}" media="screen">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
     <title>Sign Up</title>
     <style>
         .error-message {
@@ -21,58 +24,92 @@
             padding: 40px;
             z-index: 9999;
         }
+
+        body{
+
+            background-image: url("./../../static/css/images/Home.jpg");
+            /* opacity: 0.7; */
+        }
+
     </style>
 </head>
+
 <body>
     <div class="u-custom-menu u-nav-container">
         <ul class="u-nav u-unstyled u-nav-1">
             <li class="u-nav-item">
-                <a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="{% url 'Contact' %}" style="padding: 10px 32px 10px 34px;">Contact</a>
+                <a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                    href="{% url 'Contact' %}" style="padding: 10px 32px 10px 34px;">Contact</a>
             </li>
         </ul>
     </div>
 
 
-    <h3>Sign Up</h3>
 
-    <form action="/signup" method="post">
-    {% csrf_token %}
+ <div class="container text-info">
+    <div class="row w-50 m-auto">
 
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username" placeholder="Create a username" required>
-        <br>
+        <h3 class="text-center my-3">Sign Up</h3>
 
-        <label for="fname">First Name</label>
-        <input type="text" id="fname" name="fname" placeholder="Enter Your First Name" required>
-        <br>
-       
-        <label for="lname">Last Name</label>
-        <input type="text" id="lname" name="lname" placeholder="Enter Your Last Name" required>
-        <br>
 
-        <label for="email">Email Address</label>
-        <input type="email" id="email" name="email" placeholder="Enter Your Email Address" required>
-        <br>
+        <form action="/signup" method="post" class="mb-3 m-auto my-5">
+            {% csrf_token %}
+    
+            <div class="row mb-3">
+                <label for="username">Username</label>
+                <input class="form-control" type="text" id="username" name="username" placeholder="Create a username" required>
+            </div>
+    
+            <div class="row mb-3">
+    
+                <label for="fname">First Name</label>
+                <input class="form-control" type="text" id="fname" name="fname" placeholder="Enter Your First Name" required>
+            </div>
+    
+            <div class="row mb-3">
+    
+    
+                <label for="lname">Last Name</label>
+                <input class="form-control" type="text" id="lname" name="lname" placeholder="Enter Your Last Name" required>
+            </div>
+            <div class="row mb-3">
+    
+    
+                <label for="email">Email Address</label>
+                <input class="form-control" type="email" id="email" name="email" placeholder="Enter Your Email Address" required>
+            </div>
+            <div class="row mb-3">
+    
+    
+                <label for="pass1">Password</label>
+                <input class="form-control" type="password" id="pass1" name="pass1" placeholder="Create a Password" required>
+            </div>
+            <div class="row mb-3">
+    
+    
+                <label for="pass2">Confirm Your Password</label>
+                <input class="form-control" type="password" id="pass2" name="pass2" placeholder="Confirm Your Password" required>
+    
+            </div>
+            <button class="btn btn-outline-primary" type="submit">Sign Up</button>
+        </form>
 
-        <label for="pass1">Password</label>
-        <input type="password" id="pass1" name="pass1" placeholder="Create a Password" required>
-
-        <br>
-        <label for="pass2">Confirm Your Password</label>
-        <input type="password" id="pass2" name="pass2" placeholder="Confirm Your Password" required>
-        <br>
-
-        <button type="submit">Sign Up</button>
-    </form>
+    </div>
+ </div>
 
     {% if messages %}
-        <div class="error-message">
-            <ul>
-                {% for message in messages %}
-                    <li>{{ message }}</li>
-                {% endfor %}
-            </ul>
-        </div>
+    <div class="error-message">
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    </div>
     {% endif %}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+
 </body>
+
 </html>
+
