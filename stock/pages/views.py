@@ -6,7 +6,7 @@ import requests
 import tensorflow as tf
 import pandas as pd
 import yfinance as yf
-from datetime import datetime
+from datetime import datetime, timedelta
 import plotly.express as px
 import seaborn as sns
 import joblib
@@ -45,6 +45,12 @@ yf.pdr_override()
 ############################################
 end = datetime.now()
 start = datetime(end.year - 11, end.month, end.day)
+
+start_date = datetime.today()
+next_week = []
+for day in range(7):
+    current_date = start_date + timedelta(days=day + 1)
+    next_week.append(str(current_date.strftime('%A')) + " : " + str(current_date.date()))
 
 #############################################################################
 apple_df = yf.download("AAPL", start, end)
@@ -198,6 +204,15 @@ def AboutApple(request):
 
 
 def PredictionApple(request):
+
+    plot_validation = figure.apple_plot_validation
+    plot_prediction = figure.apple_prediction_plot
+    last_day = apple_df.index[-1] 
+    last_value = apple_df["Close"].iloc[-1]
+    last_day_name = last_day.day_name()
+
+    text = f"the current value of {last_day_name} : {str(last_day)[:11]} : is {last_value} $"
+    
     messages = []
     if request.method == 'POST':
         form = MyForm(request.POST)
@@ -207,12 +222,12 @@ def PredictionApple(request):
             num_days = form.cleaned_data['number_field']     
 
             try:
-                for num, i in enumerate(prediction.predict(int(num_days), select="apple"), start=1):
+                for num, i in enumerate(prediction.predict(int(num_days), select="apple"), start=0):
                     if currency_name == "Dollar":
-                        message = f"The prediction of day {num} is : '{i}' $"
+                        message = f"The prediction of day {next_week[num]} is : '{i}' $"
                     else:
                         n = float(dollar_df["inverseRate"][dollar_df["name"] == currency_name])
-                        message = f"The prediction of day {num} is : '{i*n}' "
+                        message = f"The prediction of day {next_week[num]} is : '{i*n}' "
 
                     messages.append(message)
 
@@ -223,7 +238,7 @@ def PredictionApple(request):
     else:
         form = MyForm()
         
-    context = {'form': form, 'messages': messages}
+    context = {'form': form, 'messages': messages, "plot_validation": plot_validation, "plot_prediction": plot_prediction, "text": text}
     return render(request, 'pages/Prediction_Apple.html', context)
 
 
@@ -384,7 +399,6 @@ def AboutNvidia (request):
 
 
 def PredictionNvidia (request):
-
     
     messages = []
     if request.method == 'POST':
