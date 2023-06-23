@@ -11,6 +11,8 @@
     <script class="u-script" type="text/javascript" src="{% static 'js/jquery_Microsoft.js' %}" defer=""></script>
     <script class="u-script" type="text/javascript" src="{% static 'js/nicepage_Microsoft.js' %}" defer=""></script>
     <meta name="generator" content="Nicepage 5.6.2, nicepage.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0-alpha3/css/bootstrap.min.css" integrity="sha512-iGjGmwIm1UHNaSuwiNFfB3+HpzT/YLJMiYPKzlQEVpT6FWi5rfpbyrBuTPseScOCWBkRtsrRIbrTzJpQ02IaLA==" crossorigin="anonymous" referrerpolicy="no-referrer" />    
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
     
     
@@ -25,7 +27,7 @@
       <meta property="og:type" content="website">
     <meta data-intl-tel-input-cdn-path="intlTelInput/"></head>
     <body class="u-body u-xl-mode" data-lang="en"><header class="u-clearfix u-header u-header" id="sec-78e1"><div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
-          <a href="https://nicepage.com" class="u-image u-logo u-image-1" data-image-width="640" data-image-height="640">
+          <a class="u-image u-logo u-image-1" data-image-width="640" data-image-height="640">
             <img src="{% static 'css/images/Logo/stocklogo.jpg' %}" class="u-logo-image u-logo-image-1">
           </a>
           <nav class="u-menu u-menu-one-level u-offcanvas u-menu-1">
@@ -56,46 +58,66 @@
           </div>
         </nav>
       </div></header>
-    <section class="u-clearfix u-section-1" id="sec-1dfe">
-      <div class="u-clearfix u-sheet u-sheet-1"></div>
-    </section>
-  
-    
-    <div class="container my-5 w-75 mx-auto" style="height: 600px; overflow: auto; margin-left: 500px;">
-      <div class="row justify-content-end">
-        <div class="col-12 col-md-6">
-          <h1 class="text-center">Prediction Microsoft</h1>
+   
+      <style>
+        .custom-margin {
+          margin-top: 100px;
+          margin-bottom: 100px;
+        }
+      </style>
+      
+      <div class="container figure-caption custom-margin">
+        <div class="row w-50 m-auto">
+          <section class="u-clearfix u-section-1" id="sec-1dfe">
+            <div id="plotly-graph"></div>
+            <script>
+              var plotData = {{ plot_validation|safe }};
+              Plotly.newPlot('plotly-graph', plotData.data, plotData.layout);
+            </script>
+          </section>
+        </div>
+      </div>
+      
+      <div class="container form-check">
+        <div class="row w-50 m-auto">
+          {{ text|safe }} <br><br>
+          <h1 class="text-center my-3">Prediction Microsoft</h1>
           <form method="POST" action="{% url 'PredictionMicrosoft' %}">
             {% csrf_token %}
             {{ form.as_p }}
             <button type="submit" name="predict" class="btn btn-primary">Predict</button>
           </form>
           {% if messages %}
-            <ul class="mt-3">
-              {% for message in messages %}
-                <li class="text-danger">{{ message }}</li>
-              {% endfor %}
-            </ul>
+          <ul class="mt-4">
+            {% for message in messages %}
+            <li class="text-danger">{{ message }}</li>
+            {% endfor %}
+          </ul>
           {% endif %}
+        </div>  
+      </div>
+      
+      <div class="container figure-caption custom-margin">
+        <div class="row w-50 m-auto">
+          <section class="u-clearfix u-section-2" id="sec-2dfe">
+            <div id="plotly-prediction-graph"></div>
+            <script>
+              var plotPredictionData = {{ plot_prediction|safe }};
+              Plotly.newPlot('plotly-prediction-graph', plotPredictionData.data, plotPredictionData.layout);
+            </script>
+            <div class="u-clearfix u-sheet u-sheet-2"></div>
+          </section>
         </div>
       </div>
-    </div>
-    
-    
     
     <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-881b"><div class="u-clearfix u-sheet u-sheet-1">
-        <p class="u-small-text u-text u-text-variant u-text-1">Sample text. Click to select the Text Element.</p>
-      </div></footer>
-    <section class="u-backlink u-clearfix u-grey-80">
-      <a class="u-link" href="https://nicepage.com/website-templates" target="_blank">
-        <span>Website Templates</span>
-      </a>
-      <p class="u-text">
-        <span>created with</span>
-      </p>
-      <a class="u-link" href="" target="_blank">
-        <span>Website Builder Software</span>
-      </a>. 
-    </section>
-  
+      <p class="u-small-text u-text u-text-variant u-text-1">if you have problem in our application click here</p>
+    </div></footer>
+  <section class="u-backlink u-clearfix u-grey-80">
+    <a class="u-link" href="https://docs.google.com/forms/d/1LEI02qWcu2sQRCcd5iOzKi7nJ0csxZO0wsuC5mxwkJM/prefill" target="_blank">
+      <span>Do you have Problem ?</span>
+    </a>
+  </section>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0-alpha3/js/bootstrap.bundle.min.js" integrity="sha512-vIAkTd3Ary9rwf0lrb9kIipyIkavKpYGnyopBXs6SiLfNSzAvCNvvQvKwBV5Xlag4O8oZpZ5U5n4bHoErGQxjw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>  
+
 </body></html>

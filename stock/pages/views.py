@@ -6,7 +6,7 @@ import requests
 import tensorflow as tf
 import pandas as pd
 import yfinance as yf
-from datetime import datetime
+from datetime import datetime, timedelta
 import plotly.express as px
 import seaborn as sns
 import joblib
@@ -46,6 +46,12 @@ yf.pdr_override()
 end = datetime.now()
 start = datetime(end.year - 11, end.month, end.day)
 
+start_date = datetime.today()
+next_week = []
+for day in range(7):
+    current_date = start_date + timedelta(days=day + 1)
+    next_week.append(str(current_date.strftime('%A')) + " : " + str(current_date.date()))
+
 #############################################################################
 apple_df = yf.download("AAPL", start, end)
 
@@ -58,6 +64,15 @@ def get_dollar_data():
 
 dollar_df = get_dollar_data()
 
+def get_info(df_name):
+    df = yf.download(df_name, start, end)
+    last_day = df.index[-1] 
+    last_value = df["Close"].iloc[-1]
+    last_day_name = last_day.day_name()
+
+    text = f"the current value of {last_day_name} : {str(last_day)[:11]} : is {last_value} $"
+
+    return text
 
 
 def Home(request):
@@ -198,6 +213,11 @@ def AboutApple(request):
 
 
 def PredictionApple(request):
+
+    plot_validation = figure.apple_plot_validation
+    plot_prediction = figure.apple_prediction_plot
+
+    
     messages = []
     if request.method == 'POST':
         form = MyForm(request.POST)
@@ -207,12 +227,12 @@ def PredictionApple(request):
             num_days = form.cleaned_data['number_field']     
 
             try:
-                for num, i in enumerate(prediction.predict(int(num_days), select="apple"), start=1):
+                for num, i in enumerate(prediction.predict(int(num_days), select="apple"), start=0):
                     if currency_name == "Dollar":
-                        message = f"The prediction of day {num} is : '{i}' $"
+                        message = f"The prediction of day {next_week[num]} is : '{i}' $"
                     else:
-                        n = float(dollar_df["inverseRate"][dollar_df["name"] == currency_name])
-                        message = f"The prediction of day {num} is : '{i*n}' "
+                        n = float(dollar_df["rate"][dollar_df["name"] == currency_name])
+                        message = f"The prediction of day {next_week[num]} is : '{i*n}' in : {currency_name} "
 
                     messages.append(message)
 
@@ -223,7 +243,7 @@ def PredictionApple(request):
     else:
         form = MyForm()
         
-    context = {'form': form, 'messages': messages}
+    context = {'form': form, 'messages': messages, "plot_validation": plot_validation, "plot_prediction": plot_prediction, "text": get_info(df_name="AAPL")}
     return render(request, 'pages/Prediction_Apple.html', context)
 
 
@@ -245,6 +265,9 @@ def AboutAmazon (request):
 
 
 def PredictionAmazon (request):
+
+    plot_validation = figure.amazon_plot_validation
+    plot_prediction = figure.amazon_prediction_plot
     
     messages = []
     if request.method == 'POST':
@@ -259,8 +282,8 @@ def PredictionAmazon (request):
                     if currency_name == "Dollar":
                         message = f"The prediction of day {num} is : '{i}' $"
                     else:
-                        n = float(dollar_df["inverseRate"][dollar_df["name"] == currency_name])
-                        message = f"The prediction of day {num} is : '{i*n}' "
+                        n = float(dollar_df["rate"][dollar_df["name"] == currency_name])
+                        message = f"The prediction of day {num} is : '{i*n}' in : {currency_name}"
                         
                     messages.append(message)
 
@@ -271,7 +294,7 @@ def PredictionAmazon (request):
     else:
         form = MyForm()
         
-    context = {'form': form, 'messages': messages}
+    context = {'form': form, 'messages': messages, "plot_validation": plot_validation, "plot_prediction": plot_prediction, "text": get_info(df_name="AMZN")}
     
     
     return render(request, "pages/Prediction_Amazon.html", context)
@@ -292,6 +315,10 @@ def AboutIntel (request):
 
 
 def PredictionIntel (request):
+
+    plot_validation = figure.intel_plot_validation
+    plot_prediction = figure.intel_prediction_plot
+
     messages = []
     if request.method == 'POST':
         form = MyForm(request.POST)
@@ -305,8 +332,8 @@ def PredictionIntel (request):
                     if currency_name == "Dollar":
                         message = f"The prediction of day {num} is : '{i}' $"
                     else:
-                        n = float(dollar_df["inverseRate"][dollar_df["name"] == currency_name])
-                        message = f"The prediction of day {num} is : '{i*n}' "
+                        n = float(dollar_df["rate"][dollar_df["name"] == currency_name])
+                        message = f"The prediction of day {num} is : '{i*n}' in : {currency_name}"
 
                     messages.append(message)
 
@@ -317,7 +344,7 @@ def PredictionIntel (request):
     else:
         form = MyForm()
         
-    context = {'form': form, 'messages': messages}    
+    context = {'form': form, 'messages': messages, "plot_validation": plot_validation, "plot_prediction": plot_prediction, "text": get_info(df_name="INTC")}    
     
     return render(request, "pages/Prediction_Intel.html", context)
 
@@ -338,6 +365,10 @@ def AboutGoogle(request):
 
 
 def PredictionGoogle(request):
+
+    plot_validation = figure.google_plot_validation
+    plot_prediction = figure.google_prediction_plot
+
     messages = []
     if request.method == 'POST':
         form = MyForm(request.POST)
@@ -351,8 +382,8 @@ def PredictionGoogle(request):
                     if currency_name == "Dollar":
                         message = f"The prediction of day {num} is : '{i}' $"
                     else:
-                        n = float(dollar_df["inverseRate"][dollar_df["name"] == currency_name])
-                        message = f"The prediction of day {num} is : '{i*n}' "
+                        n = float(dollar_df["rate"][dollar_df["name"] == currency_name])
+                        message = f"The prediction of day {num} is : '{i*n}' in : {currency_name}"
                         
                     messages.append(message)
 
@@ -363,7 +394,7 @@ def PredictionGoogle(request):
     else:
         form = MyForm()
         
-    context = {'form': form, 'messages': messages}
+    context = {'form': form, 'messages': messages, "plot_validation": plot_validation, "plot_prediction": plot_prediction, "text": get_info(df_name="GOOGL")}
     return render(request, "pages/Prediction_Google.html", context)
 
 
@@ -386,6 +417,9 @@ def AboutNvidia (request):
 def PredictionNvidia (request):
 
     
+    plot_validation = figure.nvidia_plot_validation
+    plot_prediction = figure.nvidia_prediction_plot
+    
     messages = []
     if request.method == 'POST':
         form = MyForm(request.POST)
@@ -399,8 +433,8 @@ def PredictionNvidia (request):
                     if currency_name == "Dollar":
                         message = f"The prediction of day {num} is : '{i}' $"
                     else:
-                        n = float(dollar_df["inverseRate"][dollar_df["name"] == currency_name])
-                        message = f"The prediction of day {num} is : '{i*n}' "
+                        n = float(dollar_df["rate"][dollar_df["name"] == currency_name])
+                        message = f"The prediction of day {num} is : '{i*n}' in : {currency_name}"
 
                     messages.append(message)
 
@@ -411,7 +445,7 @@ def PredictionNvidia (request):
     else:
         form = MyForm()
         
-    context = {'form': form, 'messages': messages}    
+    context = {'form': form, 'messages': messages, "plot_validation": plot_validation, "plot_prediction": plot_prediction, "text": get_info(df_name="NVDA")}    
     
     
     return render(request, "pages/Prediction_Nvidia.html", context)
@@ -435,6 +469,9 @@ def AboutMeta (request):
 
 def PredictionMeta (request):
 
+    plot_validation = figure.meta_plot_validation
+    plot_prediction = figure.meta_prediction_plot
+
     messages = []
     if request.method == 'POST':
         form = MyForm(request.POST)
@@ -448,8 +485,8 @@ def PredictionMeta (request):
                     if currency_name == "Dollar":
                         message = f"The prediction of day {num} is : '{i}' $"
                     else:
-                        n = float(dollar_df["inverseRate"][dollar_df["name"] == currency_name])
-                        message = f"The prediction of day {num} is : '{i*n}' "
+                        n = float(dollar_df["rate"][dollar_df["name"] == currency_name])
+                        message = f"The prediction of day {num} is : '{i*n}' in : {currency_name}"
                         
                     messages.append(message)
 
@@ -460,7 +497,7 @@ def PredictionMeta (request):
     else:
         form = MyForm()
         
-    context = {'form': form, 'messages': messages}
+    context = {'form': form, 'messages': messages, "plot_validation": plot_validation, "plot_prediction": plot_prediction, "text": get_info(df_name="meta")}
     
     return render(request, "pages/Prediction_Meta.html", context)
 
@@ -482,6 +519,10 @@ def AboutMicrosoft (request):
 
 
 def PredictionMicrosoft (request):
+
+    plot_validation = figure.microsoft_plot_validation
+    plot_prediction = figure.microsoft_prediction_plot
+
     messages = []
     if request.method == 'POST':
         form = MyForm(request.POST)
@@ -495,8 +536,8 @@ def PredictionMicrosoft (request):
                     if currency_name == "Dollar":
                         message = f"The prediction of day {num} is : '{i}' $"
                     else:
-                        n = float(dollar_df["inverseRate"][dollar_df["name"] == currency_name])
-                        message = f"The prediction of day {num} is : '{i*n}' "
+                        n = float(dollar_df["rate"][dollar_df["name"] == currency_name])
+                        message = f"The prediction of day {num} is : '{i*n}' in : {currency_name}"
                         
                     messages.append(message)
 
@@ -507,7 +548,7 @@ def PredictionMicrosoft (request):
     else:
         form = MyForm()
         
-    context = {'form': form, 'messages': messages}
+    context = {'form': form, 'messages': messages, "plot_validation": plot_validation, "plot_prediction": plot_prediction, "text": get_info(df_name="MSFT")}
 
     return render(request, "pages/Prediction_Microsoft.html", context)
 
@@ -530,6 +571,9 @@ def AboutNetflix (request):
 
 def PredictionNetflix (request):
 
+    plot_validation = figure.netflix_plot_validation
+    plot_prediction = figure.netflix_prediction_plot
+
     messages = []
     if request.method == 'POST':
         form = MyForm(request.POST)
@@ -543,8 +587,8 @@ def PredictionNetflix (request):
                     if currency_name == "Dollar":
                         message = f"The prediction of day {num} is : '{i}' $"
                     else:
-                        n = float(dollar_df["inverseRate"][dollar_df["name"] == currency_name])
-                        message = f"The prediction of day {num} is : '{i*n}' "
+                        n = float(dollar_df["rate"][dollar_df["name"] == currency_name])
+                        message = f"The prediction of day {num} is : '{i*n}' in : {currency_name}"
 
                     messages.append(message)
 
@@ -555,7 +599,7 @@ def PredictionNetflix (request):
     else:
         form = MyForm()
         
-    context = {'form': form, 'messages': messages}
+    context = {'form': form, 'messages': messages, "plot_validation": plot_validation, "plot_prediction": plot_prediction, "text": get_info(df_name="NFLX")}
     
     
     return render(request, "pages/Prediction_Netflix.html", context)
@@ -578,6 +622,9 @@ def AboutTesla (request):
 
 
 def PredictionTesla (request):
+
+    plot_validation = figure.tesla_plot_validation
+    plot_prediction = figure.tesla_prediction_plot
     
     messages = []
     if request.method == 'POST':
@@ -592,8 +639,8 @@ def PredictionTesla (request):
                     if currency_name == "Dollar":
                         message = f"The prediction of day {num} is : '{i}' $"
                     else:
-                        n = float(dollar_df["inverseRate"][dollar_df["name"] == currency_name])
-                        message = f"The prediction of day {num} is : '{i*n}' "
+                        n = float(dollar_df["rate"][dollar_df["name"] == currency_name])
+                        message = f"The prediction of day {num} is : '{i*n}' in : {currency_name}"
 
                     messages.append(message)
 
@@ -604,6 +651,6 @@ def PredictionTesla (request):
     else:
         form = MyForm()
         
-    context = {'form': form, 'messages': messages}    
+    context = {'form': form, 'messages': messages, "plot_validation": plot_validation, "plot_prediction": plot_prediction, "text": get_info(df_name="TSLA")}    
     
     return render(request, "pages/Prediction_Tesla.html", context)
