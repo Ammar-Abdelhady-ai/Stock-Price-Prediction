@@ -1,10 +1,138 @@
 {% load static %}
 
+<!DOCTYPE html> 
+<html lang="en">
+    <head>
 
-{% include 'barts/navbar.html' %}
-
-{% block content %}
-
-{% endblock content %}
-
-{% include 'barts/foter.html' %} 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+        <meta name="keywords" content="Our Team, ​Our People, ​Got New Project?">
+        <meta name="description" content="">
+        <title>Home</title>
+        <link rel="stylesheet" href="{% static 'css/nicepage_Home.css' %}" media="screen">
+        <link rel="stylesheet" href="{% static 'css/Home_Home.css' %}" media="screen">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+        integrity="sha512-t4GWSVZO1eC8BM339Xd7Uphw5s17a86tIZIj8qRxhnKub6WoyhnrxeCIMeAqBPgdZGlCcG2PrZjMc+Wr78+5Xg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script class="u-script" type="text/javascript" src="{% static 'js/jquery_Home.js' %}" defer=""></script>
+        <script class="u-script" type="text/javascript" src="{% static 'js/nicepage_Home.js' %}" defer=""></script>
+        <meta name="generator" content="Nicepage 5.6.2, nicepage.com">
+        <link id="u-theme-google-font" rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+        <link id="u-page-google-font" rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Ubuntu:300,300i,400,400i,500,500i,700,700i">
+    
+    
+    
+    
+        <script type="application/ld+json">{
+            "@context": "http://schema.org",
+            "@type": "Organization",
+            "name": ""
+        }
+        </script>
+        <meta name="theme-color" content="#876cc4">
+        <meta property="og:title" content="Home">
+        <meta property="og:type" content="website">
+        <meta data-intl-tel-input-cdn-path="intlTelInput/">
+        <style>
+        .expand-on-hover:hover {
+            transform: scale(1.1);
+            transition: transform 0.2s ease-in-out;
+        }
+        tr:hover {
+            background-color: #e6e6e6;
+        }
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    
+        }
+        .section-container {}
+        .anas-margin {
+            margin: auto;
+        }
+        .card {
+            border: none;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            border-radius: 20pt;
+    
+        }
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+        }
+        .card-header {
+            background-color: #f8f9fa;
+            border-bottom: none;
+            font-weight: bold;
+        }
+        .card-footer {
+            background-color: #f8f9fa;
+            border-top: none;
+        }
+        .table {
+            font-size: 1rem;
+        }
+        .table thead th {
+            border-bottom: 2px solid #dee2e6;
+        }
+        .table tbody tr:nth-of-type(odd) {
+            background-color: #f8f9fa;
+        }
+        .table tbody tr:hover {
+            background-color: #e9ecef;
+        }
+        /* Navbar styling */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff;
+            box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.1);
+            height: 80px;
+            padding: 0 20px;
+        }
+        /* Navbar links styling */
+        .navbar ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar li {
+            margin: 0 10px;
+        }
+        .navbar a {
+            color: #444;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            transition: 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+        .navbar a:hover,
+        .navbar a.active {
+            color: #007bff;
+            border-bottom: 3px solid #007bff;
+        }
+        /* Mobile navigation toggle button styling */
+        .mobile-nav-toggle {
+            font-size: 24px;
+            color: #007bff;
+            cursor: pointer;
+        }
+        </style>
+    </head>
+    <body>
+        {% include 'parts/navbar.html' %}
+        <div class="container">
+            {% block content %}
+            {% endblock %}
+        </div>
+        {% include 'parts/footer.html' %} 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js" integrity="sha512-3dZ9wIrMMij8rOH7X3kLfXAzwtcHpuYpEgQg1OA4QAob1e81H8ntUQmQm3pBudqIoySO5j0tHN4ENzA6+n2r4w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    </body>
+</html>

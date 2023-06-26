@@ -48,8 +48,17 @@ start = datetime(end.year - 11, end.month, end.day)
 
 start_date = datetime.today()
 next_week = []
-for day in range(7):
-    current_date = start_date + timedelta(days=day + 1)
+current_date = datetime.today()
+
+# Calculate the date of yesterday
+yesterday = current_date - timedelta(days=1)
+
+# Format the date of yesterday as a string
+yesterday_str = yesterday.strftime('%Y-%m-%d')
+
+next_week.append(yesterday.strftime('%A') + " : " + str(yesterday_str))
+for day in range(6):
+    current_date = start_date + timedelta(days=day)
     next_week.append(str(current_date.strftime('%A')) + " : " + str(current_date.date()))
 
 #############################################################################
@@ -278,15 +287,14 @@ def PredictionAmazon (request):
             num_days = form.cleaned_data['number_field']     
 
             try:
-                for num, i in enumerate(prediction.predict(int(num_days), select="amazon"), start=1):
+                for num, i in enumerate(prediction.predict(int(num_days), select="apple"), start=0):
                     if currency_name == "Dollar":
-                        message = f"The prediction of day {num} is : '{i}' $"
+                        message = f"The prediction of day {next_week[num]} is : '{i}' $"
                     else:
                         n = float(dollar_df["rate"][dollar_df["name"] == currency_name])
-                        message = f"The prediction of day {num} is : '{i*n}' in : {currency_name}"
-                        
-                    messages.append(message)
+                        message = f"The prediction of day {next_week[num]} is : '{i*n}' in : {currency_name} "
 
+                    messages.append(message)
             except:    
                 message = "Sorry Error in Model procse !"
                 messages.append(message)
@@ -328,15 +336,14 @@ def PredictionIntel (request):
             num_days = form.cleaned_data['number_field']     
 
             try:
-                for num, i in enumerate(prediction.predict(int(num_days), select="intel"), start=1):
+                for num, i in enumerate(prediction.predict(int(num_days), select="apple"), start=0):
                     if currency_name == "Dollar":
-                        message = f"The prediction of day {num} is : '{i}' $"
+                        message = f"The prediction of day {next_week[num]} is : '{i}' $"
                     else:
                         n = float(dollar_df["rate"][dollar_df["name"] == currency_name])
-                        message = f"The prediction of day {num} is : '{i*n}' in : {currency_name}"
+                        message = f"The prediction of day {next_week[num]} is : '{i*n}' in : {currency_name} "
 
                     messages.append(message)
-
             except:    
                 message = "Sorry Error in Model procse !"
                 messages.append(message)
@@ -378,15 +385,14 @@ def PredictionGoogle(request):
             num_days = form.cleaned_data['number_field']     
 
             try:
-                for num, i in enumerate(prediction.predict(int(num_days), select="google"), start=1):
+                for num, i in enumerate(prediction.predict(int(num_days), select="apple"), start=0):
                     if currency_name == "Dollar":
-                        message = f"The prediction of day {num} is : '{i}' $"
+                        message = f"The prediction of day {next_week[num]} is : '{i}' $"
                     else:
                         n = float(dollar_df["rate"][dollar_df["name"] == currency_name])
-                        message = f"The prediction of day {num} is : '{i*n}' in : {currency_name}"
-                        
-                    messages.append(message)
+                        message = f"The prediction of day {next_week[num]} is : '{i*n}' in : {currency_name} "
 
+                    messages.append(message)
             except:    
                 message = "Sorry Error in Model procse !"
                 messages.append(message)
@@ -429,15 +435,14 @@ def PredictionNvidia (request):
             num_days = form.cleaned_data['number_field']     
 
             try:
-                for num, i in enumerate(prediction.predict(int(num_days), select="nvidia"), start=1):
+                for num, i in enumerate(prediction.predict(int(num_days), select="apple"), start=0):
                     if currency_name == "Dollar":
-                        message = f"The prediction of day {num} is : '{i}' $"
+                        message = f"The prediction of day {next_week[num]} is : '{i}' $"
                     else:
                         n = float(dollar_df["rate"][dollar_df["name"] == currency_name])
-                        message = f"The prediction of day {num} is : '{i*n}' in : {currency_name}"
+                        message = f"The prediction of day {next_week[num]} is : '{i*n}' in : {currency_name} "
 
                     messages.append(message)
-
             except:    
                 message = "Sorry Error in Model procse !"
                 messages.append(message)
@@ -481,15 +486,14 @@ def PredictionMeta (request):
             num_days = form.cleaned_data['number_field']     
 
             try:
-                for num, i in enumerate(prediction.predict(int(num_days), select="meta"), start=1):
+                for num, i in enumerate(prediction.predict(int(num_days), select="apple"), start=0):
                     if currency_name == "Dollar":
-                        message = f"The prediction of day {num} is : '{i}' $"
+                        message = f"The prediction of day {next_week[num]} is : '{i}' $"
                     else:
                         n = float(dollar_df["rate"][dollar_df["name"] == currency_name])
-                        message = f"The prediction of day {num} is : '{i*n}' in : {currency_name}"
-                        
-                    messages.append(message)
+                        message = f"The prediction of day {next_week[num]} is : '{i*n}' in : {currency_name} "
 
+                    messages.append(message)
             except:    
                 message = "Sorry Error in Model procse !"
                 messages.append(message)
@@ -532,15 +536,14 @@ def PredictionMicrosoft (request):
             num_days = form.cleaned_data['number_field']     
 
             try:
-                for num, i in enumerate(prediction.predict(int(num_days), select="microsoft"), start=1):
+                for num, i in enumerate(prediction.predict(int(num_days), select="apple"), start=0):
                     if currency_name == "Dollar":
-                        message = f"The prediction of day {num} is : '{i}' $"
+                        message = f"The prediction of day {next_week[num]} is : '{i}' $"
                     else:
                         n = float(dollar_df["rate"][dollar_df["name"] == currency_name])
-                        message = f"The prediction of day {num} is : '{i*n}' in : {currency_name}"
-                        
-                    messages.append(message)
+                        message = f"The prediction of day {next_week[num]} is : '{i*n}' in : {currency_name} "
 
+                    messages.append(message)
             except:    
                 message = "Sorry Error in Model procse !"
                 messages.append(message)
@@ -583,15 +586,14 @@ def PredictionNetflix (request):
             num_days = form.cleaned_data['number_field']     
 
             try:
-                for num, i in enumerate(prediction.predict(int(num_days), select="netflix"), start=1):
+                for num, i in enumerate(prediction.predict(int(num_days), select="apple"), start=0):
                     if currency_name == "Dollar":
-                        message = f"The prediction of day {num} is : '{i}' $"
+                        message = f"The prediction of day {next_week[num]} is : '{i}' $"
                     else:
                         n = float(dollar_df["rate"][dollar_df["name"] == currency_name])
-                        message = f"The prediction of day {num} is : '{i*n}' in : {currency_name}"
+                        message = f"The prediction of day {next_week[num]} is : '{i*n}' in : {currency_name} "
 
                     messages.append(message)
-
             except:    
                 message = "Sorry Error in Model procse !"
                 messages.append(message)
@@ -635,15 +637,14 @@ def PredictionTesla (request):
             num_days = form.cleaned_data['number_field']     
 
             try:
-                for num, i in enumerate(prediction.predict(int(num_days), select="tesla"), start=1):
+                for num, i in enumerate(prediction.predict(int(num_days), select="apple"), start=0):
                     if currency_name == "Dollar":
-                        message = f"The prediction of day {num} is : '{i}' $"
+                        message = f"The prediction of day {next_week[num]} is : '{i}' $"
                     else:
                         n = float(dollar_df["rate"][dollar_df["name"] == currency_name])
-                        message = f"The prediction of day {num} is : '{i*n}' in : {currency_name}"
+                        message = f"The prediction of day {next_week[num]} is : '{i*n}' in : {currency_name} "
 
                     messages.append(message)
-
             except:    
                 message = "Sorry Error in Model procse !"
                 messages.append(message)

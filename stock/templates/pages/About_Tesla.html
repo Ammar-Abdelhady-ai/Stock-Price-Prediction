@@ -11,6 +11,8 @@
     <script class="u-script" type="text/javascript" src="{% static 'js/jquery_Tesla.js' %}" defer=""></script>
     <script class="u-script" type="text/javascript" src="{% static 'js/nicepage_Tesla.js' %}" defer=""></script>
     <title>Plot View</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0-alpha3/css/bootstrap.min.css" integrity="sha512-iGjGmwIm1UHNaSuwiNFfB3+HpzT/YLJMiYPKzlQEVpT6FWi5rfpbyrBuTPseScOCWBkRtsrRIbrTzJpQ02IaLA==" crossorigin="anonymous" referrerpolicy="no-referrer" />    
+
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <meta name="generator" content="Nicepage 5.6.2, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
@@ -58,65 +60,84 @@
           </div>
         </nav>
       </div></header>
-    <section class="u-clearfix u-section-1" id="sec-16b8">
+      <section class="u-clearfix u-section-1" id="sec-16b8">
 
 
+        <div id="combined_plot_section">
+          
+          <p class="text-center">Tesla's data that we used to train had no troubles at all, the loss was almost (0) along the way, but the validation data was troublesome,<br> went up from the beginning to spike at the end of the second epoch to a loss rate of (0.0175) but then fell down (epoch 3) and almost settled at (0.0030)
+            </p>
+  
+          <div class="w-100 text-center img-fluid" id="plot_model_data"></div>
+  
+          <hr class="w-75 m-auto my-3">
+          <p class="text-center">Starting from the year 2012 at the Tesla company, they had a rough batch in the beginning. Started quite smaller than others with (around $7) and <br>didn't have any notable leaps. After 9 years, they began to compete in the market and peaked twice, their all-time best was in year 2022 at (more than $400).
 
-      <div id="combined_plot_section">
-        <div id="plot_model_data"></div>
-        <div id="plot_data"></div>
-        <div id="change_rate"></div>
-      
+          </p>
+  
+          <div class="w-100 text-center img-fluid" id="plot_data"></div>
+          <hr class="w-75 m-auto my-3">
+  
+          <p class="text-center">But eventually started to decline again and lose it after that great leap.</p>
+          <div id="change_rate"></div>
+        
+          <script>
+            // Get the plot JSON from the context passed by Django
+            
+            var plotJsonModel = {{ plot_model_data|safe }};
+            var plotJsonData = {{ plot_data|safe }};
+            var plotJsonChangeRate = {{ change_rate|safe }};
+        
+            // Render the plots
+            Plotly.newPlot('plot_model_data', plotJsonModel.data, plotJsonModel.layout);
+            Plotly.newPlot('plot_data', plotJsonData.data, plotJsonData.layout);
+            Plotly.newPlot('change_rate', plotJsonChangeRate.data, plotJsonChangeRate.layout);
+          </script>
+        </div>
+  
+        <hr>
+        <p class="text-center">The stockbrokers and most clients are somewhat starting to lose faith in Tesla and in Elon Musk himself.
+        </p>
+  
+        <div id="combined_plot"></div>
+        
         <script>
           // Get the plot JSON from the context passed by Django
           var plotJsonModel = {{ plot_model_data|safe }};
           var plotJsonData = {{ plot_data|safe }};
           var plotJsonChangeRate = {{ change_rate|safe }};
-      
-          // Render the plots
-          Plotly.newPlot('plot_model_data', plotJsonModel.data, plotJsonModel.layout);
-          Plotly.newPlot('plot_data', plotJsonData.data, plotJsonData.layout);
-          Plotly.newPlot('change_rate', plotJsonChangeRate.data, plotJsonChangeRate.layout);
+        
+          // Define the subplot layout
+          var layout = {
+            grid: {rows: 3, columns: 1},
+            height: 800
+          };
+        
+          // Combine the data from the three plots into a single trace array
+          var data = [];
+          data.push.apply(data, plotJsonModel.data);
+          data.push.apply(data, plotJsonData.data);
+          data.push.apply(data, plotJsonChangeRate.data);
+        
+          // Render the combined plot
+          Plotly.newPlot('combined_plot', data, layout);
         </script>
-      </div>
-      
-      <div id="combined_plot"></div>
-      
-      <script>
-        // Get the plot JSON from the context passed by Django
-        var plotJsonModel = {{ plot_model_data|safe }};
-        var plotJsonData = {{ plot_data|safe }};
-        var plotJsonChangeRate = {{ change_rate|safe }};
-      
-        // Define the subplot layout
-        var layout = {
-          grid: {rows: 3, columns: 1},
-          height: 800
-        };
-      
-        // Combine the data from the three plots into a single trace array
-        var data = [];
-        data.push.apply(data, plotJsonModel.data);
-        data.push.apply(data, plotJsonData.data);
-        data.push.apply(data, plotJsonChangeRate.data);
-      
-        // Render the combined plot
-        Plotly.newPlot('combined_plot', data, layout);
-      </script>
-      
-
-
-      <div class="u-clearfix u-sheet u-sheet-1"></div>
-    </section>
-    
-    
-    <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-881b"><div class="u-clearfix u-sheet u-sheet-1">
-      <p class="u-small-text u-text u-text-variant u-text-1">if you have problem in our application click here</p>
-    </div></footer>
-  <section class="u-backlink u-clearfix u-grey-80">
-    <a class="u-link" href="https://docs.google.com/forms/d/1LEI02qWcu2sQRCcd5iOzKi7nJ0csxZO0wsuC5mxwkJM/prefill" target="_blank">
-      <span>Do you have Problem ?</span>
-    </a>
-  </section>
+        
   
-</body></html>
+        
+        <div class="u-clearfix u-sheet u-sheet-1"></div>
+  
+      </section>
+      
+      <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-881b"><div class="u-clearfix u-sheet u-sheet-1">
+        <p class="u-small-text u-text u-text-variant u-text-1">if you have problem in our application click here</p>
+      </div></footer>
+    <section class="u-backlink u-clearfix u-grey-80">
+      <a class="u-link" href="https://docs.google.com/forms/d/1LEI02qWcu2sQRCcd5iOzKi7nJ0csxZO0wsuC5mxwkJM/prefill" target="_blank">
+        <span>Do you have Problem ?</span>
+      </a>
+    </section>
+  
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0-alpha3/js/bootstrap.bundle.min.js" integrity="sha512-vIAkTd3Ary9rwf0lrb9kIipyIkavKpYGnyopBXs6SiLfNSzAvCNvvQvKwBV5Xlag4O8oZpZ5U5n4bHoErGQxjw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>  
+  
+  </body></html>

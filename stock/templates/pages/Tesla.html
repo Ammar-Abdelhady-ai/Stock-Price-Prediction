@@ -12,7 +12,7 @@
     <script class="u-script" type="text/javascript" src="{% static 'js/nicepage_Tesla.js' %}" defer=""></script>
     <meta name="generator" content="Nicepage 5.6.2, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0-alpha3/css/bootstrap.min.css" integrity="sha512-iGjGmwIm1UHNaSuwiNFfB3+HpzT/YLJMiYPKzlQEVpT6FWi5rfpbyrBuTPseScOCWBkRtsrRIbrTzJpQ02IaLA==" crossorigin="anonymous" referrerpolicy="no-referrer" />    
     
     
      
@@ -26,9 +26,79 @@
   <meta name="theme-color" content="#478ac9">
   <meta property="og:title" content="Home">
   <meta property="og:type" content="website">
-<meta data-intl-tel-input-cdn-path="intlTelInput/"></head>
-<body class="u-body u-xl-mode" data-lang="en"><header class="u-clearfix u-header u-header" id="sec-78e1"><div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
-      <a class="u-image u-logo u-image-1" data-image-width="640" data-image-height="640">
+<meta data-intl-tel-input-cdn-path="intlTelInput/">
+<style>
+  .expand-on-hover:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  tr:hover {
+    background-color: #e6e6e6;
+  }
+  .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    
+  }
+  .section-container {
+    
+  }
+  .anas-margin{
+    margin: auto;
+  }
+  .card {
+    border: none;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    border-radius: 20pt;
+
+  }
+  .anas-card{
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
+  }
+  .anas-card:hover{
+    transform: scale(1.05);
+
+  }
+  .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  }
+
+  .card-header {
+    background-color: #f8f9fa;
+    border-bottom: none;
+    font-weight: bold;
+  }
+
+  .card-footer {
+    background-color: #f8f9fa;
+    border-top: none;
+  }
+
+  .table {
+    font-size: 1rem;
+  }
+
+  .table thead th {
+    border-bottom: 2px solid #dee2e6;
+  }
+
+  .table tbody tr:nth-of-type(odd) {
+    background-color: #f8f9fa;
+  }
+
+  .table tbody tr:hover {
+    background-color: #e9ecef;
+  }
+</style>
+</head>
+<body class="u-body u-xl-mode" data-lang="en">
+  <header class="u-clearfix u-header u-header" id="sec-78e1"><div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+      <a href="/" class="u-image u-logo u-image-1" data-image-width="640" data-image-height="640">
         <img src="{% static 'css/images/Logo/stocklogo.jpg' %}" class="u-logo-image u-logo-image-1">
       </a>
       <nav class="u-menu u-menu-one-level u-offcanvas u-menu-1">
@@ -37,72 +107,130 @@
             <svg class="u-svg-link" viewBox="0 0 24 24"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu-hamburger"></use></svg>
             <svg class="u-svg-content" version="1.1" id="menu-hamburger" viewBox="0 0 16 16" x="0px" y="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g><rect y="1" width="16" height="2"></rect><rect y="7" width="16" height="2"></rect><rect y="13" width="16" height="2"></rect>
 </g></svg>
-            </a>
-          </div>
-          <div class="u-custom-menu u-nav-container">
-            <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="/Tesla" style="padding: 10px 20px;">Home</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="AboutTesla" style="padding: 10px 20px;">About</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="PredictionTesla" style="padding: 10px 20px;">prediction</a>
+          </a>
+        </div>
+        <div class="u-custom-menu u-nav-container">
+          <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="{% url 'Apple' %}" style="padding: 10px 20px;">Home</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="{% url 'AboutTesla' %}" style="padding: 10px 20px;">About</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="{% url 'PredictionTesla' %}" style="padding: 10px 20px;">prediction</a>
 </li></ul>
-          </div>
-          <div class="u-custom-menu u-nav-container-collapse">
-            <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
-              <div class="u-inner-container-layout u-sidenav-overflow">
-                <div class="u-menu-close"></div>
-                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/Tesla">Home</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="About_Tesla">About</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Prediction_Tesla">prediction</a>
-</li></ul>
-              </div>
+        </div>
+        <div class="u-custom-menu u-nav-container-collapse">
+          <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
+            <div class="u-inner-container-layout u-sidenav-overflow">
+              <div class="u-menu-close"></div>
+              
             </div>
-            <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
           </div>
-        </nav>
-      </div></header>
-    <section class="u-clearfix u-section-1" id="sec-5cd7">
-      <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
-        <div class="u-clearfix u-expanded-width u-gutter-0 u-layout-wrap u-layout-wrap-1">
-          <div class="u-layout" style="">
-            <div class="u-layout-row" style="">
-              <div class="u-align-left u-container-style u-image u-layout-cell u-left-cell u-shading u-size-30 u-size-xs-60 u-image-1" src="" data-image-width="1920" data-image-height="1280">
-                <div class="u-container-layout u-container-layout-1" src=""></div>
+          <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
+        </div>
+      </nav>
+    </div></header>
+  <section class="u-clearfix u-section-1" id="sec-5cd7">
+    <div class="u-clearfix u-sheet u-valign-middle u-sheet-1 ">
+      <div class="u-clearfix u-expanded-width u-gutter-0 u-layout-wrap u-layout-wrap-1">
+        <div class="u-layout anas-card">
+          <div class="u-layout-row" style="box-shadow: 0px 3px 16px 1px #8b8989; border-radius: 45px 45px 45px 45px;">
+            <div class="u-align-left u-container-style u-image u-layout-cell u-left-cell u-shading u-size-30 u-size-xs-60 u-image-1" style="border-radius: 45px 0 0 45px;" src="" data-image-width="1920" data-image-height="1280">
+              <div class="u-container-layout u-container-layout-1" src=""></div>
+            </div>
+            <div class="u-align-left u-container-style u-grey-5 u-layout-cell u-right-cell u-size-30 u-size-xs-60 u-layout-cell-2" style="border-radius: 0 45px 45px 0; background-color: transparent;">
+              <div class="u-container-layout u-valign-bottom u-container-layout-2">
+                <h2 class="u-text u-text-1">Tesla </h2>
+                <h4 class="u-text u-text-3"><span class="u-text u-text-custom-color-1">{{ predict_of_next_day|safe }} $</span></h4>
+                <p class="u-text u-text-3">Tesla, Inc. (TSLA) is currently priced at $1,071.93 USD with a market cap of $1.1 trillion USD. The company has been reporting strong earnings growth and expanding its electric vehicle and solar energy businesses. Tesla does not pay a dividend to shareholders. Analysts view the stock as a "hold", with an average target price of $1,121.77 USD. The stock has been on an upward trend for several years, but as with any stock, prices can be volatile and subject to fluctuation.</p>
               </div>
-              <div class="u-align-left u-container-style u-grey-5 u-layout-cell u-right-cell u-size-30 u-size-xs-60 u-layout-cell-2">
-                <div class="u-container-layout u-valign-bottom u-container-layout-2">
-                  <h2 class="u-text u-text-1">Tesla </h2>
-                  <p class="u-text u-text-custom-color-1 u-text-2">155 ^$ </p>
-                  <p class="u-text u-text-3">Tesla, Inc. (TSLA) is currently priced at $1,071.93 USD with a market cap of $1.1 trillion USD. The company has been reporting strong earnings growth and expanding its electric vehicle and solar energy businesses. Tesla does not pay a dividend to shareholders. Analysts view the stock as a "hold", with an average target price of $1,121.77 USD. The stock has been on an upward trend for several years, but as with any stock, prices can be volatile and subject to fluctuation.</p>
-                </div>
-              </div>
+              
+            </div>
+          </div>
+        </div>
+        <P>
+          Definition of the terms:
+          <br>
+          <br>
+          Open Price: The open price refers to the price at which a stock begins trading at the beginning of a trading session or market day. It is the first recorded price of a stock during that particular trading day.
+          <br>
+          <br>
+          High Price: The high price represents the highest price at which a stock is traded during a specific trading session or market day. It indicates the peak value reached by the stock's price within that time period.
+          <br>
+          <br>
+          Low Price: The low price represents the lowest price at which a stock is traded during a specific trading session or market day. It indicates the minimum value reached by the stock's price within that time period.
+          <br>
+          <br>
+          Close Price: The close price, also known as the closing price, is the final price at which a stock is traded at the end of a trading session or market day. It is the last recorded price of a stock during that particular trading day.
+          <br>
+          <br>
+          Adjusted Close Price: The adjusted close price takes into account factors such as stock splits, dividends, and other corporate actions that may affect the stock's price. It provides a more accurate representation of the stock's historical performance by adjusting for these events.
+          <br>
+          <br>
+          Volume: Volume refers to the total number of shares or contracts traded during a specific trading session or market day. It measures the level of activity and liquidity in a stock. Higher volume generally indicates greater market interest and participation.
+        </P>
+      </div>
+    </div>
+  </section>
+  <section class="u-clearfix u-section-1 my-3 py-5" id="sec-5cd7">
+    <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+      
+      <div class="card mx-auto mt-5 anas-margin" style="width: 100%;">
+        <div class="card-body text-center" style="max-height: 400px; overflow: auto;">
+          <div class="container ">
+            <div class="row ">
+              <table class="table table-striped ">
+                <tbody>
+                  {{ df_html|safe }}
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
       </div>
-    </section>
-    <div class="container m-auto my-5 w-50">
-      <div class="row" style="overflow: auto;height: 300px;!important">
-        {{ df_html|safe }}
-    
-      </div>
-      <p>-------------------------<br>----------------------------<br></p>
-      <div class="row" style="overflow: auto;height: 300px;!important">
-        {{ df_describe|safe }}
-    
-      </div>
-    
+      <p>The table provides summary statistics for the columns in the dataset, including Open, High, Low, Close, Adj Close, and Volume. Here is a description of each column and its corresponding values:
+        <br><br>
+        Count: The number of data points available for each column, which is 2766 for all columns.<br><br>
+        Mean: The average value of each column.<br><br>
+        Std: The standard deviation, which measures the dispersion or variability of the values around the mean.<br><br>
+        Min: The minimum value observed in each column.<br><br>
+        25%: The 25th percentile, indicating the value below which 25% of the data falls.<br><br>
+        50%: The 50th percentile or median, representing the middle value of the dataset.<br><br>
+        75%: The 75th percentile, indicating the value below which 75% of the data falls.<br><br>
+        Max: The maximum value observed in each column.<br><br>
+        These statistics provide insights into the distribution and range of values for each column, allowing you to understand the historical trends, volatility, and trading activity of Apple's stock over the given period.</p>
       
+      
+      <!-- <div class="row" style="overflow: auto;height: 300px;!important">
+      </div> -->
+             
+      <div class="card mx-auto mt-5 anas-margin" style="width: 100%;">
+        <div class="card-body text-center" style="max-height: 400px; overflow: auto;">
+          <div class="container ">
+            <div class="row ">
+              <table class="table table-striped ">
+                <tbody>
+                  {{ df_describe|safe }}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
     </div>
-    </section>
-    
-    
-    <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-881b"><div class="u-clearfix u-sheet u-sheet-1">
-      <p class="u-small-text u-text u-text-variant u-text-1">if you have problem in our application click here</p>
-    </div></footer>
-  <section class="u-backlink u-clearfix u-grey-80">
-    <a class="u-link" href="https://docs.google.com/forms/d/1LEI02qWcu2sQRCcd5iOzKi7nJ0csxZO0wsuC5mxwkJM/prefill" target="_blank">
-      <span>Do you have Problem ?</span>
-    </a>
+
   </section>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-  
+
+  <section class="u-clearfix u-grey-5 u-section-3" id="sec-5d74">
+
+      
+  </div>
+</section>
+
+
+<section class="u-backlink u-clearfix u-grey-80">
+<a class="u-link" href="https://docs.google.com/forms/d/1LEI02qWcu2sQRCcd5iOzKi7nJ0csxZO0wsuC5mxwkJM/prefill" target="_blank">
+  <span>Do you have Problem ?</span>
+</a>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0-alpha3/js/bootstrap.bundle.min.js" integrity="sha512-vIAkTd3Ary9rwf0lrb9kIipyIkavKpYGnyopBXs6SiLfNSzAvCNvvQvKwBV5Xlag4O8oZpZ5U5n4bHoErGQxjw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>  
 </body></html>

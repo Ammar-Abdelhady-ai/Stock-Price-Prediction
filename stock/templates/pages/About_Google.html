@@ -12,6 +12,7 @@
     <script class="u-script" type="text/javascript" src="{% static 'js/nicepage_Google.js' %}" defer=""></script>
     <title>Plot View</title>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0-alpha3/css/bootstrap.min.css" integrity="sha512-iGjGmwIm1UHNaSuwiNFfB3+HpzT/YLJMiYPKzlQEVpT6FWi5rfpbyrBuTPseScOCWBkRtsrRIbrTzJpQ02IaLA==" crossorigin="anonymous" referrerpolicy="no-referrer" />    
 
     <meta name="generator" content="Nicepage 5.6.2, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
@@ -60,55 +61,72 @@
           </div>
         </nav>
       </div></header>
-    <section class="u-clearfix u-section-1" id="sec-16b8">
+      <section class="u-clearfix u-section-1" id="sec-16b8">
 
 
-      <div id="combined_plot_section">
-        <div id="plot_model_data"></div>
-        <div id="plot_data"></div>
-        <div id="change_rate"></div>
-      
+        <div id="combined_plot_section">
+          
+          <p class="text-center">Validation loss starts at a high rate at the beginning of the training process (0.0046) but remarkably collapses at the end of the first 2 epochs to a (0.0014) and <br>then settles during the rest of the epochs at around (0.001) loss rate. While the training loss here started at a (0.0025) then kept decreasing gradually until it reached <br> a steady state of (0.00025) at the end of the first epoch, and pretty much stayed that way for the rest of the process. This minimal loss rate in both loss rates is a good sign of our model's work.            
+            </p>
+  
+          <div class="w-100 text-center img-fluid" id="plot_model_data"></div>
+  
+          <hr class="w-75 m-auto my-3">
+          <p class="text-center">The data entries starting from 2012, describing the outstanding e-commerce Google stock prices, started at quite a good start (around $10), <br>then steadily increased reaching its first peak at the beginning of year 2020 (more than $75), and reached their best at 2022 (more than $150)</p>
+  
+          <div class="w-100 text-center img-fluid" id="plot_data"></div>
+          <hr class="w-75 m-auto my-3">
+  
+          <p class="text-center">The change rate graph shows they had a setback when COVID19 broke out in the first quarter of 2020 (around $55) but stood on their feet again proving themselves to be worthy in the market.<br> Although they had another setback at our current times of depression (2022-2023) but they surely can leap back out of it.
+            </p>
+          <div id="change_rate"></div>
+        
+          <script>
+            // Get the plot JSON from the context passed by Django
+            
+            var plotJsonModel = {{ plot_model_data|safe }};
+            var plotJsonData = {{ plot_data|safe }};
+            var plotJsonChangeRate = {{ change_rate|safe }};
+        
+            // Render the plots
+            Plotly.newPlot('plot_model_data', plotJsonModel.data, plotJsonModel.layout);
+            Plotly.newPlot('plot_data', plotJsonData.data, plotJsonData.layout);
+            Plotly.newPlot('change_rate', plotJsonChangeRate.data, plotJsonChangeRate.layout);
+          </script>
+        </div>
+  
+        <hr>
+        <p class="text-center">On the final part, the data we used to validate the model fits the predicted data quite good, which means the model is working properly. </p>
+  
+        <div id="combined_plot"></div>
+        
         <script>
           // Get the plot JSON from the context passed by Django
           var plotJsonModel = {{ plot_model_data|safe }};
           var plotJsonData = {{ plot_data|safe }};
           var plotJsonChangeRate = {{ change_rate|safe }};
-      
-          // Render the plots
-          Plotly.newPlot('plot_model_data', plotJsonModel.data, plotJsonModel.layout);
-          Plotly.newPlot('plot_data', plotJsonData.data, plotJsonData.layout);
-          Plotly.newPlot('change_rate', plotJsonChangeRate.data, plotJsonChangeRate.layout);
+        
+          // Define the subplot layout
+          var layout = {
+            grid: {rows: 3, columns: 1},
+            height: 800
+          };
+        
+          // Combine the data from the three plots into a single trace array
+          var data = [];
+          data.push.apply(data, plotJsonModel.data);
+          data.push.apply(data, plotJsonData.data);
+          data.push.apply(data, plotJsonChangeRate.data);
+        
+          // Render the combined plot
+          Plotly.newPlot('combined_plot', data, layout);
         </script>
-      </div>
-      
-      <div id="combined_plot"></div>
-      
-      <script>
-        // Get the plot JSON from the context passed by Django
-        var plotJsonModel = {{ plot_model_data|safe }};
-        var plotJsonData = {{ plot_data|safe }};
-        var plotJsonChangeRate = {{ change_rate|safe }};
-      
-        // Define the subplot layout
-        var layout = {
-          grid: {rows: 3, columns: 1},
-          height: 800
-        };
-      
-        // Combine the data from the three plots into a single trace array
-        var data = [];
-        data.push.apply(data, plotJsonModel.data);
-        data.push.apply(data, plotJsonData.data);
-        data.push.apply(data, plotJsonChangeRate.data);
-      
-        // Render the combined plot
-        Plotly.newPlot('combined_plot', data, layout);
-      </script>
-    
-      
-      <div class="u-clearfix u-sheet u-sheet-1"></div>
-    </section>
-    
+        
+  
+        
+        <div class="u-clearfix u-sheet u-sheet-1"></div>
+  
+      </section>
     
     <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-881b"><div class="u-clearfix u-sheet u-sheet-1">
       <p class="u-small-text u-text u-text-variant u-text-1">if you have problem in our application click here</p>
@@ -118,5 +136,6 @@
       <span>Do you have Problem ?</span>
     </a>
   </section>
-  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0-alpha3/js/bootstrap.bundle.min.js" integrity="sha512-vIAkTd3Ary9rwf0lrb9kIipyIkavKpYGnyopBXs6SiLfNSzAvCNvvQvKwBV5Xlag4O8oZpZ5U5n4bHoErGQxjw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>  
+
 </body></html>

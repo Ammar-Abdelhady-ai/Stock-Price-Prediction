@@ -25,7 +25,95 @@
       <meta name="theme-color" content="#478ac9">
       <meta property="og:title" content="Home">
       <meta property="og:type" content="website">
-    <meta data-intl-tel-input-cdn-path="intlTelInput/"></head>
+    <meta data-intl-tel-input-cdn-path="intlTelInput/">
+    <style>
+      .custom-margin {
+        margin-top: 100px;
+        margin-bottom: 100px;
+      }
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 70vh;
+        border-radius:10px;
+      }
+      
+      #plotly-prediction-graph {
+        border-radius: 20px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease-in-out;
+      }
+      
+      #plotly-prediction-graph:hover {
+        transform: scale(1.1);
+      }     
+      #plotly-graph {
+        border-radius: 20px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease-in-out;
+      }
+    
+      #plotly-graph:hover {
+        transform: scale(1.1);
+      }
+
+
+      .form-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 60vh;
+      }
+      
+      /* Style the card */
+      .card {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        text-align: center;
+        transition: all 0.3s ease;
+      }
+      
+      /* Add animations on hover */
+      .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+      }
+      
+      /* Style the form heading */
+      .form-heading {
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+      
+      /* Style the form message */
+      .form-message {
+        color: #ff0000;
+        list-style: none;
+        margin-top: 10px;
+      }
+      
+      /* Style the form submit button */
+      .form-submit {
+        background-color: #007bff;
+        border: none;
+        border-radius: 5px;
+        color: #fff;
+        cursor: pointer;
+        font-size: 16px;
+        padding: 10px 20px;
+        transition: all 0.3s ease;
+      }
+      
+      /* Add animations on hover */
+      .form-submit:hover {
+        background-color: #0062cc;
+      }
+      
+    </style>
+  </head>
     <body class="u-body u-xl-mode" data-lang="en"><header class="u-clearfix u-header u-header" id="sec-78e1"><div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
           <a class="u-image u-logo u-image-1" data-image-width="640" data-image-height="640">
             <img src="{% static 'css/images/Logo/stocklogo.jpg' %}" class="u-logo-image u-logo-image-1">
@@ -79,22 +167,22 @@
         </div>
       </div>
       
-      <div class="container form-check">
-        <div class="row w-50 m-auto">
+      <div class="form-container">
+        <div class="card row w-50 m-auto">
           {{ text|safe }} <br><br>
-          <h1 class="text-center my-3">Prediction Tesla</h1>
+          <h1 class="form-heading">Prediction Tesla</h1>
           <form method="POST" action="{% url 'PredictionTesla' %}">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit" name="predict" class="btn btn-primary">Predict</button>
-          </form>
-          {% if messages %}
-          <ul class="mt-4">
-            {% for message in messages %}
-            <li class="text-danger">{{ message }}</li>
-            {% endfor %}
-          </ul>
-          {% endif %}
+            <button type="submit" name="predict" class="form-submit">Predict</button>
+          </form>    
+            {% if messages %}
+            <ul class="mt-4">
+              {% for message in messages %}
+              <li class="form-message">{{ message }}</li>
+              {% endfor %}
+            </ul>
+            {% endif %}
         </div>  
       </div>
       
@@ -112,14 +200,14 @@
       </div>
       
     
-    <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-881b"><div class="u-clearfix u-sheet u-sheet-1">
-        <p class="u-small-text u-text u-text-variant u-text-1">if you have problem in our application click here</p>
-      </div></footer>
-    <section class="u-backlink u-clearfix u-grey-80">
-      <a class="u-link" href="https://docs.google.com/forms/d/1LEI02qWcu2sQRCcd5iOzKi7nJ0csxZO0wsuC5mxwkJM/prefill" target="_blank">
-        <span>Do you have Problem ?</span>
-      </a>
-    </section>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0-alpha3/js/bootstrap.bundle.min.js" integrity="sha512-vIAkTd3Ary9rwf0lrb9kIipyIkavKpYGnyopBXs6SiLfNSzAvCNvvQvKwBV5Xlag4O8oZpZ5U5n4bHoErGQxjw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>  
+      <section class="u-backlink u-clearfix u-grey-90" style="background-color: #f8f8f8;">
+        <div class="u-container-style u-group u-group-1"> 
+       <div class="u-container-layout u-container-layout-1" style="text-align: center;">
+          <a class="u-link u-text-active-palette-1-base u-text-hover-palette-2-base u-text-palette-1-base" 
+          href="https://docs.google.com/forms/d/1LEI02qWcu2sQRCcd5iOzKi7nJ0csxZO0wsuC5mxwkJM/prefill" 
+          target="_blank" style="text-decoration:none;color:#4d4d4d;font-weight:bold;display:inline-block;padding:10px 20px;border-radius:5px;background-color:#ffffff;transition: all 0.3s ease;position:relative;bottom:-25px;">
+           Report a problem <span class="u-hover" style="position:absolute;left:0;bottom:100%;width:100%;background-color:#4d4d4d;color:#ffffff;text-align:center;padding:5px 0;opacity:0;transition: all 0.3s ease;">
+             Click to report a problem</span></section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 
 </body></html>

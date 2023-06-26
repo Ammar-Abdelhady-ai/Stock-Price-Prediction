@@ -1,183 +1,212 @@
+{% extends "..\templates\base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html style="font-size: 16px;" lang="en"><head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="utf-8">
-    <meta name="keywords" content="Our Team, ​Our People, ​Got New Project?">
-    <meta name="description" content="">
-    <title>Home</title>
-    <link rel="stylesheet" href="{% static 'css/nicepage_Home.css' %}" media="screen">
-<link rel="stylesheet" href="{% static 'css/Home_Home.css' %}" media="screen">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <script class="u-script" type="text/javascript" src="{% static 'js/jquery_Home.js' %}" defer=""></script>
-    <script class="u-script" type="text/javascript" src="{% static 'js/nicepage_Home.js' %}" defer=""></script>
-    <meta name="generator" content="Nicepage 5.6.2, nicepage.com">
-    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
-    <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,300i,400,400i,500,500i,700,700i">
-    
-     
-    
-    
-    <script type="application/ld+json">{
-		"@context": "http://schema.org",
-		"@type": "Organization",
-		"name": ""
-}</script>
-    <meta name="theme-color" content="#876cc4">
-    <meta property="og:title" content="Home">
-    <meta property="og:type" content="website">
-  <meta data-intl-tel-input-cdn-path="intlTelInput/"></head>
-  <body class="u-body u-xl-mode" data-lang="en">
-    <section class="u-clearfix u-image u-section-1" id="sec-5018" data-image-width="1772" data-image-height="980">
-      <section class="u-clearfix u-image u-section-1" id="sec-5018" data-image-width="1772" data-image-height="980">
-        <a class="u-image u-logo u-image-1" data-image-width="640" data-image-height="640" style="margin-top: 10px;">
-          <img src="{% static 'css/images/Logo/stocklogo.jpg' %}" class="u-logo-image u-logo-image-1" style="max-width: 80px; height: auto; margin-left: 10px;">
-        </a>
-        <!-- Rest of your code -->
-      </section>
-      
-      
-      <div class="u-clearfix u-sheet u-sheet-1"></div>
-      
-    </section>
-    <section class="u-align-center u-clearfix u-section-2" id="carousel_4fec">
-      <div class="u-clearfix u-sheet u-sheet-1">
-        <h2 class="u-align-center u-text u-text-default u-text-1"> Stock Price Prediction<br>
-        </h2>
-        <p class="u-align-center u-text u-text-body-color u-text-2"> Stock Price Prediction using deep learning helps you discover the future value of company stock and other financial assets traded on an exchange. The entire idea of predicting stock prices is to gain significant profits. Predicting how the stock market will perform is a hard task to do. There are other factors involved in the prediction, such as physical and psychological factors, rational and irrational behavior, and so on. All these factors combine to make share prices dynamic and volatile. This makes it very difficult to predict stock prices with high accuracy.&nbsp;</p>
-        <div class="u-expanded-width u-list u-list-1">
-          <div class="u-repeater u-repeater-1">
 
-            <div class="u-align-center u-container-align-center u-container-style u-file-link u-list-item u-radius-20 u-repeater-item u-shape-round u-white u-list-item-1" data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction="" title="Blog">
-              <a href="{% url 'Apple' %}">
-              <div class="u-container-layout u-similar-container u-container-layout-1">
-                <div alt="" class="u-image u-image-circle u-image-1" data-image-width="3072" data-image-height="2048"></div>
-                <h5 class="u-align-center u-text u-text-3">Apple</h5>
-                <h6 class="u-align-center u-text u-text-default u-text-palette-1-base u-text-4"> technology company</h6>
-                <p class="u-align-center u-text u-text-default u-text-5"> Apple is a global tech giant that&nbsp;started in a garage&nbsp;in 1976 by Steve Jobs and Steve Wozniak, who wanted to build their own computers.</p>
-              </div>
-             </a>
-            </div>
-          
-          
-            <div class="u-align-center u-container-align-center u-container-style u-list-item u-radius-20 u-repeater-item u-shape-round u-white u-list-item-2" data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction="">
-              <a href="{% url 'Google' %}">
-              <div class="u-container-layout u-similar-container u-container-layout-2">
-                <div alt="" class="u-image u-image-circle u-image-2" data-image-width="474" data-image-height="316"></div>
-                <h5 class="u-align-center u-text u-text-6">Google</h5>
-                <h6 class="u-align-center u-text u-text-default u-text-palette-1-base u-text-7"> technology company</h6>
-                <p class="u-align-center u-text u-text-default u-text-8"> Google LLC is an&nbsp;American multinational technology company&nbsp;focusing on online advertising, search engine technology, cloud computing, computer software, quantum computing, e-commerce, artificial intelligence, and consumer electronics.</p>
-              </div>
-              </a>
-            </div>
-            
-            <div class="u-align-center u-container-align-center u-container-style u-list-item u-radius-20 u-repeater-item u-shape-round u-white u-list-item-3" data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction="">
-              <a href="{% url 'Microsoft' %}">
-              <div class="u-container-layout u-similar-container u-container-layout-3">
-                <div alt="" class="u-image u-image-circle u-image-3" data-image-width="392" data-image-height="234"></div>
-                <h5 class="u-align-center u-text u-text-9">Microsoft</h5>
-                <h6 class="u-align-center u-text u-text-default u-text-palette-1-base u-text-10"> technology company</h6>
-                <p class="u-align-center u-text u-text-default u-text-11"> Microsoft Corporation is an&nbsp;American multinational technology corporation&nbsp;headquartered in Redmond, Washington, United States. Microsoft's best-known software products are the Windows line of operating systems, the Microsoft Office suite, and the Internet Explorer and Edge web browsers.</p>
-              </div>
-              </a>
 
-            </div>
-            <div class="u-align-center u-container-align-center u-container-style u-list-item u-radius-20 u-repeater-item u-shape-round u-white u-list-item-4" data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction="">
-              <a href="{% url 'Amazon' %}">
-              <div class="u-container-layout u-similar-container u-container-layout-4">
-                <div alt="" class="u-image u-image-circle u-image-4" data-image-width="474" data-image-height="294"></div>
-                <h5 class="u-align-center u-text u-text-12">Amazon</h5>
-                <h6 class="u-align-center u-text u-text-default u-text-palette-1-base u-text-13"> technology company</h6>
-                <p class="u-align-center u-text u-text-default u-text-14"> Amazon is also a leader in&nbsp;cloud computing, artificial intelligence, digital streaming, and smart devices, such as Kindle, Fire, Echo, and Alexa.</p>
+{% block content %}
+<section class="u-align-center u-clearfix u-section-2" id="carousel_4fec">
+  <div class="u-clearfix u-sheet u-sheet-1 " id="about">
+    <div class="expand-on-hover">
+      <h2 class="u-align-center u-text u-text-default u-text-1">Stock Price Prediction</h2>
+      <p class="u-align-center u-text u-text-body-color u-text-2">Stock Price Prediction using deep learning helps you
+        discover the future value of company stock and other financial assets traded on an exchange. The entire idea
+        of predicting stock prices is to gain significant profits. Predicting how the stock market will perform is a
+        hard task to do. There are other factors involved in the prediction, such as physical and psychological
+        factors, rational and irrational behavior, and so on. All these factors combine to make share prices dynamic
+        and volatile. This makes it very difficult to predict stock prices with high accuracy.</p>
+    </div>
+    <div class="u-expanded-width u-list u-list-1 " id="Work">
+      <div class="u-repeater u-repeater-1 ">
+        <div
+          class="expand-on-hover u-align-center u-container-align-center u-container-style u-file-link u-list-item u-radius-20 u-repeater-item u-shape-round u-white u-list-item-1">
+          <a href="{% url 'Apple' %}">
+            <div class="u-container-layout u-similar-container u-container-layout-1">
+              <div alt="" class="u-image u-image-circle u-image-1" data-image-width="3072" data-image-height="2048">
               </div>
-            </a>
+              <h5 class="u-align-center u-text u-text-3">Apple</h5>
+              <h6 class="u-align-center u-text u-text-default u-text-palette-1-base u-text-4">Technology company</h6>
+              <p class="u-align-center u-text u-text-default u-text-5">Apple is a global tech giant that started in a
+                garage in 1976 by Steve Jobs and Steve Wozniak, who wanted to build their own computers.</p>
             </div>
+          </a>
+        </div>
 
-            <div class="u-align-center u-container-style u-list-item u-radius-20 u-repeater-item u-shape-round u-white u-list-item-5" data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction="">
-              <a href="{% url 'Meta' %}">
-              <div class="u-container-layout u-similar-container u-container-layout-5">
-                <div alt="" class="u-image u-image-circle u-image-5" data-image-width="283" data-image-height="234"></div>
-                <h5 class="u-align-center u-text u-text-15">Meta</h5>
-                <h6 class="u-align-center u-text u-text-default u-text-palette-1-base u-text-16">technology company</h6>
-                <p class="u-align-center u-text u-text-default u-text-17"> Meta Platforms, is an&nbsp;American multinational technology conglomerate&nbsp;based in Menlo Park, California. The company owns Facebook, Instagram, and WhatsApp, among other products and services.</p>
+        <div
+          class="expand-on-hover u-align-center u-container-align-center u-container-style u-list-item u-radius-20 u-repeater-item u-shape-round u-white u-list-item-2"
+          data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction="">
+          <a href="{% url 'Google' %}">
+            <div class="u-container-layout u-similar-container u-container-layout-2">
+              <div alt="" class="u-image u-image-circle u-image-2" data-image-width="474" data-image-height="316">
               </div>
-              </a>
+              <h5 class="u-align-center u-text u-text-6">Google</h5>
+              <h6 class="u-align-center u-text u-text-default u-text-palette-1-base u-text-7"> technology company</h6>
+              <p class="u-align-center u-text u-text-default u-text-8"> Google LLC is an&nbsp;American multinational
+                technology company&nbsp;focusing on online advertising, search engine technology, cloud computing,
+                computer software, quantum computing, e-commerce, artificial intelligence, and consumer electronics.
+              </p>
             </div>
+          </a>
+        </div>
 
-            <div class="u-align-center u-container-align-center u-container-style u-list-item u-radius-20 u-repeater-item u-shape-round u-white u-list-item-6" data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction="">
-              <a href="{% url 'Netflix' %}">
-              <div class="u-container-layout u-similar-container u-container-layout-6">
-                <div alt="" class="u-image u-image-circle u-image-6" data-image-width="380" data-image-height="235"></div>
-                <h5 class="u-align-center u-text u-text-18">Netflix</h5>
-                <h6 class="u-align-center u-text u-text-default u-text-palette-1-base u-text-19">&nbsp;streaming service company</h6>
-                <p class="u-align-center u-text u-text-default u-text-20"> Netflix, Inc. is a&nbsp;streaming entertainment service company, which provides subscription service streaming movies and television episodes over the Internet and sending DVDs by mail.</p>
+        <div
+          class="expand-on-hover u-align-center u-container-align-center u-container-style u-list-item u-radius-20 u-repeater-item u-shape-round u-white u-list-item-3"
+          data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction="">
+          <a href="{% url 'Microsoft' %}">
+            <div class="u-container-layout u-similar-container u-container-layout-3">
+              <div alt="" class="u-image u-image-circle u-image-3" data-image-width="392" data-image-height="234">
               </div>
-              </a>
+              <h5 class="u-align-center u-text u-text-9">Microsoft</h5>
+              <h6 class="u-align-center u-text u-text-default u-text-palette-1-base u-text-10"> technology company
+              </h6>
+              <p class="u-align-center u-text u-text-default u-text-11"> Microsoft Corporation is an&nbsp;American
+                multinational technology corporation&nbsp;headquartered in Redmond, Washington, United States.
+                Microsoft's best-known software products are the Windows line of operating systems, the Microsoft
+                Office suite, and the Internet Explorer and Edge web browsers.</p>
             </div>
+          </a>
 
-            <div class="u-align-center u-container-style u-list-item u-radius-20 u-repeater-item u-shape-round u-white u-list-item-7" data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction="">
-              <a href="{% url 'Tesla' %}">
-              <div class="u-container-layout u-similar-container u-container-layout-7">
-                <div alt="" class="u-image u-image-circle u-image-7" data-image-width="474" data-image-height="266"></div>
-                <h5 class="u-align-center u-text u-text-21"> Tesla</h5>
-                <h6 class="u-align-center u-text u-text-default u-text-palette-1-base u-text-22">Electric car manufacturing company</h6>
-                <p class="u-align-center u-text u-text-default u-text-23"> Tesla is a company that aims to accelerate the world's transition to sustainable energy with&nbsp;electric cars,&nbsp;solar panels,&nbsp;and batteries</p>
+        </div>
+        <div
+          class="expand-on-hover u-align-center u-container-align-center u-container-style u-list-item u-radius-20 u-repeater-item u-shape-round u-white u-list-item-4"
+          data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction="">
+          <a href="{% url 'Amazon' %}">
+            <div class="u-container-layout u-similar-container u-container-layout-4">
+              <div alt="" class="u-image u-image-circle u-image-4" data-image-width="474" data-image-height="294">
               </div>
-              </a>
+              <h5 class="u-align-center u-text u-text-12">Amazon</h5>
+              <h6 class="u-align-center u-text u-text-default u-text-palette-1-base u-text-13"> technology company
+              </h6>
+              <p class="u-align-center u-text u-text-default u-text-14"> Amazon is also a leader in&nbsp;cloud
+                computing, artificial intelligence, digital streaming, and smart devices, such as Kindle, Fire, Echo,
+                and Alexa.</p>
             </div>
+          </a>
+        </div>
 
-            <div class="u-align-center u-container-align-center u-container-style u-list-item u-radius-20 u-repeater-item u-shape-round u-white u-list-item-8" data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction="">
-              <a href="{% url 'Intel' %}">
-              <div class="u-container-layout u-similar-container u-container-layout-8">
-                <div alt="" class="u-image u-image-circle u-image-8" data-image-width="361" data-image-height="234"></div>
-                <h5 class="u-align-center u-text u-text-24">Intel</h5>
-                <h6 class="u-align-center u-text u-text-default u-text-palette-1-base u-text-25">technology company</h6>
-                <p class="u-align-center u-text u-text-default u-text-26"> Intel is an American multinational technology company that designs and manufactures microprocessors and other computer components. The company was founded in 1968 and is headquartered in Santa Clara, California. Intel is one of the world's largest and most influential semiconductor chip makers, with a significant share of the global market for PC and server processors.</p>
+        <div
+          class=" expand-on-hover u-align-center u-container-style u-list-item u-radius-20 u-repeater-item u-shape-round u-white u-list-item-5"
+          data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction="">
+          <a href="{% url 'Meta' %}">
+            <div class="u-container-layout u-similar-container u-container-layout-5">
+              <div alt="" class="u-image u-image-circle u-image-5" data-image-width="283" data-image-height="234">
               </div>
-              </a>
+              <h5 class="u-align-center u-text u-text-15">Meta</h5>
+              <h6 class="u-align-center u-text u-text-default u-text-palette-1-base u-text-16">technology company</h6>
+              <p class="u-align-center u-text u-text-default u-text-17"> Meta Platforms, is an&nbsp;American
+                multinational technology conglomerate&nbsp;based in Menlo Park, California. The company owns Facebook,
+                Instagram, and WhatsApp, among other products and services.</p>
             </div>
-            <div class="u-align-center u-container-align-center u-container-style u-list-item u-radius-20 u-repeater-item u-shape-round u-white u-list-item-9" data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction="">
-              <a href="{% url 'Nvidia' %}">
-              <div class="u-container-layout u-similar-container u-container-layout-9">
-                <div alt="" class="u-image u-image-circle u-image-9" data-image-width="349" data-image-height="234"></div>
-                <h5 class="u-align-center u-text u-text-27">NVIDIA</h5>
-                <h6 class="u-align-center u-text u-text-default u-text-palette-1-base u-text-28">technology company</h6>
-                <p class="u-align-center u-text u-text-default u-text-29">NVIDIA Corporation is an American technology company that is primarily known for designing graphics processing units (GPUs) for the gaming and professional markets, as well as system on a chip units (SoCs) for the mobile computing and automotive market. Their products are used in a wide range of applications, from video games and artificial intelligence to self-driving cars and supercomputers.</p>
+          </a>
+        </div>
+
+        <div
+          class="expand-on-hover u-align-center u-container-align-center u-container-style u-list-item u-radius-20 u-repeater-item u-shape-round u-white u-list-item-6"
+          data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction="">
+          <a href="{% url 'Netflix' %}">
+            <div class="u-container-layout u-similar-container u-container-layout-6">
+              <div alt="" class="u-image u-image-circle u-image-6" data-image-width="380" data-image-height="235">
               </div>
-              </a>
+              <h5 class="u-align-center u-text u-text-18">Netflix</h5>
+              <h6 class="u-align-center u-text u-text-default u-text-palette-1-base u-text-19">&nbsp;streaming service
+                company</h6>
+              <p class="u-align-center u-text u-text-default u-text-20"> Netflix, Inc. is a&nbsp;streaming
+                entertainment service company, which provides subscription service streaming movies and television
+                episodes over the Internet and sending DVDs by mail.</p>
             </div>
-          </div>
+          </a>
+        </div>
+
+        <div
+          class="expand-on-hover u-align-center u-container-style u-list-item u-radius-20 u-repeater-item u-shape-round u-white u-list-item-7"
+          data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction="">
+          <a href="{% url 'Tesla' %}">
+            <div class="u-container-layout u-similar-container u-container-layout-7">
+              <div alt="" class="u-image u-image-circle u-image-7" data-image-width="474" data-image-height="266">
+              </div>
+              <h5 class="u-align-center u-text u-text-21"> Tesla</h5>
+              <h6 class="u-align-center u-text u-text-default u-text-palette-1-base u-text-22">Electric car
+                manufacturing company</h6>
+              <p class="u-align-center u-text u-text-default u-text-23"> Tesla is a company that aims to accelerate
+                the world's transition to sustainable energy with&nbsp;electric cars,&nbsp;solar panels,&nbsp;and
+                batteries</p>
+            </div>
+          </a>
+        </div>
+
+        <div
+          class="expand-on-hover u-align-center u-container-align-center u-container-style u-list-item u-radius-20 u-repeater-item u-shape-round u-white u-list-item-8"
+          data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction="">
+          <a href="{% url 'Intel' %}">
+            <div class="u-container-layout u-similar-container u-container-layout-8">
+              <div alt="" class="u-image u-image-circle u-image-8" data-image-width="361" data-image-height="234">
+              </div>
+              <h5 class="u-align-center u-text u-text-24">Intel</h5>
+              <h6 class="u-align-center u-text u-text-default u-text-palette-1-base u-text-25">technology company</h6>
+              <p class="u-align-center u-text u-text-default u-text-26"> Intel is an American multinational technology
+                company that designs and manufactures microprocessors and other computer components. The company was
+                founded in 1968 and is headquartered in Santa Clara, California. Intel is one of the world's largest
+                and most influential semiconductor chip makers, with a significant share of the global market for PC
+                and server processors.</p>
+            </div>
+          </a>
+        </div>
+        <div
+          class="expand-on-hover u-align-center u-container-align-center u-container-style u-list-item u-radius-20 u-repeater-item u-shape-round u-white u-list-item-9"
+          data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction="">
+          <a href="{% url 'Nvidia' %}">
+            <div class="u-container-layout u-similar-container u-container-layout-9">
+              <div alt="" class="u-image u-image-circle u-image-9" data-image-width="349" data-image-height="234">
+              </div>
+              <h5 class="u-align-center u-text u-text-27">NVIDIA</h5>
+              <h6 class="u-align-center u-text u-text-default u-text-palette-1-base u-text-28">technology company</h6>
+              <p class="u-align-center u-text u-text-default u-text-29">NVIDIA Corporation is an American technology
+                company that is primarily known for designing graphics processing units (GPUs) for the gaming and
+                professional markets, as well as system on a chip units (SoCs) for the mobile computing and automotive
+                market. Their products are used in a wide range of applications, from video games and artificial
+                intelligence to self-driving cars and supercomputers.</p>
+            </div>
+          </a>
         </div>
       </div>
-    </section>
-    <section class="u-clearfix u-palette-2-base u-section-3" id="sec-63ad">
+    </div>
+  </div>
+</section>
 
-
-
-    <div class="container my-5 w-75 m-auto" style="height: 400px; overflow: auto; !important">
-      <div class="row text-center">
-        {{ df_html|safe }}
+<div class="card mx-auto mt-5 anas-margin">
+  <!-- <div class="card-header text-center">
+    </div> -->
+  <div class="card-body text-center" style="max-height: 400px; overflow: auto;">
+    <div class="container ">
+      <div class="row ">
+        <table class="table table-striped ">
+          <tbody>
+            {{ df_html|safe }}
+          </tbody>
+        </table>
       </div>
     </div>
+  </div>
+  <!-- <div class="card-footer text-center">
+    </div> -->
+</div>
+
+<br><br><br><br>
 
 
+<div class="u-clearfix u-sheet u-valign-top u-sheet-1">
+  <div class="u-container-style u-expanded-width u-group u-radius-20 u-shape-round u-white u-group-1">
+    <div class="u-container-layout u-container-layout-1">
+      <h1 class="u-align-center u-text u-text-1"> currency value against the dollar</h1>
+      <div class="u-table u-table-responsive u-table-1">
+        <section class="u-backlink u-clearfix u-grey-80">
 
-
-
-      <div class="u-clearfix u-sheet u-valign-top u-sheet-1">
-        <div class="u-container-style u-expanded-width u-group u-radius-20 u-shape-round u-white u-group-1">
-          <div class="u-container-layout u-container-layout">
-            <h1 class="u-align-center u-text u-text-1"> currency value against the dollar</h1><br><br>
-            <div class="u-table u-table-responsive u-table-1">   
-              <h6>The API that i use to get The price of all currencies against the dollar</h6><br><br>
-              <section class="u-backlink u-clearfix u-grey-80">
-                
-                  <span>API link</span>
-                </p>
-                <a class="u-link" href="http://www.floatrates.com/daily/usd.json" target="_blank">
-                  <span>This website displays periodic exchange rates for all currencies against the dollar.</span>
-                </a>
-              </section>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-</body></html>
+          <span>API link</span>
+          </p>
+          <a class="u-link" href="http://www.floatrates.com/daily/usd.json" target="_blank">
+            <span>This website displays periodic exchange rates for all currencies against the dollar.</span>
+          </a>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
